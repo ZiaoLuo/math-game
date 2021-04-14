@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+          
+           
+            button{width: 100px;height: 100px;margin: 5px;
+            border: none;}
+            button:focus{outline:none;}
+            button:active{
+                box-shadow: 0 5px #666;
+               transform: translateY(4px);
+            }
+            .main{
+            width: 600px;
+            height: 800px;
+            border-style: solid;
+            border-color: green;
+            position:absolute;
+                left:0;
+            right:0;
+            margin:0 auto;
+            }
+            .TopBar{
+                width: 600px;
+                height: 100px;
+                font-size: 30px;
+                text-align: center;
+               color: orange;
+                                }
+            .Quiz{
+                width: 600px;
+                height: 130px;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                color: blue;
+                font-size: 50px;
+                font-family: Arial, Helvetica, sans-serif;
+                }
+            .Play{
+                width: 400px;
+                height: 520px;
+
+                text-align: center;
+                padding-left: 100px;
+                padding-right: 100px;
+                font-family: Arial, Helvetica, sans-serif;
+               }
+
+        </style>
+    </head>
+    <body>
+        <script type="text/javascript" src ="js/Functions.js"></script>
+        
+    <div class="main">
+        <div class="TopBar" id = "rslt">
+            <h1 id="rslt">Quiz Starts</h1>
+        </div>
+        <div class="Quiz" id = "Question"> 
+        </div>
+        <div class="Play">
+            <button onclick="checkAnswer(this.id)" id="1" style="background: url(images/number1.png); background-size: contain;"></button>
+            <button onclick="checkAnswer(this.id)" id="2" style="background: url(images/number2.png); background-size: contain;"></button>
+            <button onclick="checkAnswer(this.id)" id="3" style="background: url(images/number3.png); background-size: contain;"></button></br>
+            <button onclick="checkAnswer(this.id)" id="4" style="background: url(images/number4.png); background-size: contain;"></button>
+            <button onclick="checkAnswer(this.id)" id="5" style="background: url(images/number5.png); background-size: contain;"></button>
+            <button onclick="checkAnswer(this.id)" id="6" style="background: url(images/number6.png); background-size: contain;"></button></br>
+            <button onclick="checkAnswer(this.id)" id="7" style="background: url(images/number7.png); background-size: contain;"></button>
+            <button onclick="checkAnswer(this.id)" id="8" style="background: url(images/number8.png); background-size: contain;"></button>
+            <button onclick="checkAnswer(this.id)" id="9" style="background: url(images/number9.png); background-size: contain;"></button></br>
+            <button onclick="checkAnswer(this.id)" id="0" style="background: url(images/number0.png); background-size: contain;"></button>
+        </div>
+
+        <script>
+    
+            var left;
+            var right;
+            var Answer;
+            
+            function newQuiz(){
+                left = Math.floor(Math.random()*4+1);
+                right = Math.floor(Math.random()*4+1); 
+                Answer = left + right;
+                return left + " + " + right + " = ?";
+            }
+            
+            document.getElementById("Question").innerHTML= newQuiz();
+        
+            function checkAnswer(buttonID){
+                if (buttonID == Answer.toString()){
+                    document.getElementById("rslt").innerHTML= "<span style='color: green;'>Well done!</span>";
+                    document.getElementById("Question").innerHTML= newQuiz();
+                }
+                else{
+                    document.getElementById("rslt").innerHTML= "<span style='color: red;'>Sorry! Wrong!</span>";
+                }
+            }
+        </script>
+    </body>
+
+</html>

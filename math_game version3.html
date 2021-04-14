@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <style type="text/css">
+    body{
+        text-align: center;
+    }
+    .main{
+        width: 600px;
+        height: 800px;
+        background-color: white;
+        border-color: green;
+        border-style: solid;
+        /* border-width: 1px; */
+        /* margin-left: 300px;         */
+        /* position: absolute; */
+        /* float: left; */
+        margin: 0 auto;
+    }
+    .Topbar{
+        width: 100%;
+        height: 100px;
+        /* margin-top: 0px; */
+        text-align: center;
+        /* background-color: aquamarine; */
+    }
+    div#message{
+        color: coral;
+        font-size: 40px;
+        font-family: Arial, Helvetica, sans-serif;
+        padding-top: 25px;
+        font-weight: bold;
+    }
+    .Quiz{
+        width: 100%;
+        height: 150px;
+        text-align: center;
+        /* background-color: bisque; */
+        display: inline;
+
+    }
+    div#quiz{
+        color: rgb(0, 26, 255);
+        padding-top: 50px;
+        font-size: 75px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        display: inline-block;
+    }
+    div#right{
+        color: rgb(0, 26, 255);
+        padding-top: 50px;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 75px;
+        display: inline-block;
+        font-weight: bold;  
+    }
+
+    .Play{
+        width: 100%;
+        height: 600px;
+        text-align: center;
+        /* background-color: darksalmon; */
+    }
+    .Play{
+        padding-top: 50px;
+    }
+    button{
+        width: 100px;
+        height: 100px;
+        border: none;
+        outline: none;
+    }
+    button:active{
+ box-shadow: 0 5px #666;
+ transform: translateY(4px);
+}
+
+</style>
+</head>
+<body>
+    
+    <div class="main">  
+        <div class="Topbar">
+            <div id ="message">Quiz Starts!</div> 
+        </div>    
+        <div class="Quiz">
+            <div id="quiz"></div>
+            <div id="right">?</div>
+        </div>                 
+        <div class="Play">
+            <button onclick="input1(this.id);" id="1" style="background: url(images/1.png); background-size: contain;"></button>
+            <button onclick="input1(this.id);" id="2" style="background: url(images/2.png); background-size: contain;"></button>
+            <button onclick="input1(this.id);" id="3" style="background: url(images/3.png); background-size: contain;"></button></br>
+            <button onclick="input1(this.id);" id="4" style="background: url(images/4.png); background-size: contain;"></button>
+            <button onclick="input1(this.id);" id="5" style="background: url(images/5.png); background-size: contain;"></button>
+            <button onclick="input1(this.id);" id="6" style="background: url(images/6.png); background-size: contain;"></button></br>
+            <button onclick="input1(this.id);" id="7" style="background: url(images/7.png); background-size: contain;"></button>
+            <button onclick="input1(this.id);" id="8" style="background: url(images/8.png); background-size: contain;"></button>
+            <button onclick="input1(this.id);" id="9" style="background: url(images/9.png); background-size: contain;"></button></br>
+            <button onclick="input1(this.id);" id="0" style="background: url(images/0.png); background-size: contain;"></button>
+            <button onclick="check();" id="enter" style="background: url(images/enter.png); background-size: contain;"></button>
+        </div>
+    </div>
+
+    <script>
+        var left;  
+        var right;
+        var sum;
+        var input = new Array();
+        var output;
+        var sum1 = 0;
+        
+        function new_Quiz(){
+            left=Math.floor((Math.random() * 20) + 1);
+            right=Math.floor((Math.random() * 20) + 1);
+            sum=left+right;
+            return left+"+"+right+"=";
+        }
+        document.getElementById("quiz").innerHTML=new_Quiz();
+
+        function input1(ID){
+            ID = parseInt(ID);
+            input.push(ID);
+            sum1 = 0;
+            for (i=input.length;i>0;i--){
+                sum1 += input[i-1]*Math.pow(10,input.length-i);
+            }
+            document.getElementById("right").innerHTML=sum1;
+        }
+        function check(){
+
+            if (sum1 == sum){
+                document.getElementById("message").innerHTML="<span style='color: green;'>Well done!</span>";
+                document.getElementById("quiz").innerHTML=new_Quiz();
+                document.getElementById("right").innerHTML="";
+            }else{
+                document.getElementById("message").innerHTML="<span style='color: red;'>Sorry!Wrong!</span>";
+                document.getElementById("right").innerHTML="";
+            }
+            
+            input = new Array;
+        }
+
+    </script>
+    
+
+</body>
+</html>
